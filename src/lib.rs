@@ -134,7 +134,7 @@ impl Fold for Timing {
         let mut stmts = ::std::mem::replace(
             &mut method.block.stmts,
             vec![parse_quote! {
-                let _timing_guard = screeps_timing::start_guard(#name);
+                let _timing_guard = crate::profiling::timing::start_guard(#name);
             }],
         );
         method.block.stmts.append(&mut stmts);
@@ -152,7 +152,7 @@ impl Fold for Timing {
         let mut stmts = ::std::mem::replace(
             &mut func.block.stmts,
             vec![parse_quote! {
-                let _timing_guard = screeps_timing::start_guard(#name);
+                let _timing_guard = crate::profiling::timing::start_guard(#name);
             }],
         );
         func.block.stmts.append(&mut stmts);
